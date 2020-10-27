@@ -5047,14 +5047,8 @@ $(INTERNAL_OTA_PACKAGE_TARGET): \
 	@echo "Package OTA: $@"
 	$(call build-ota-package-target,$@,-k $(if $(SIGNING_KEYS), $(SIGNING_KEYS)/releasekey, $(KEY_CERT_PAIR)) --output_metadata_path $(INTERNAL_OTA_METADATA))
 
-CHERISH_TARGET_PACKAGE := $(PRODUCT_OUT)/$(CHERISH_VERSION).zip
-
-.PHONY: otapackage bacon
+.PHONY: otapackage 
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
-bacon: otapackage
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CHERISHLUTION_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(CHERISH_TARGET_PACKAGE) > $(CHERISH_TARGET_PACKAGE).md5sum
-	@echo "**Package complete"**: $(CHERISH_TARGET_PACKAGE)"
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
 name := $(TARGET_PRODUCT)
