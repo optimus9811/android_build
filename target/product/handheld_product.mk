@@ -33,7 +33,7 @@ PRODUCT_PACKAGES += \
     OneTimeInitializer \
     preinstalled-packages-platform-handheld-product.xml \
     QuickSearchBox \
-    SettingsIntelligenceAOSP \
+    SettingsIntelligence \
     frameworks-base-overlays
 
 PRODUCT_PACKAGES_DEBUG += \
