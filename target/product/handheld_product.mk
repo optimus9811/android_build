@@ -23,16 +23,20 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/media_product.mk)
 # /product packages
 PRODUCT_PACKAGES += \
     Calendar \
-    Camera2 \
     Contacts \
     DeskClock \
     Gallery2 \
-    LatinIME \
     Music \
     OneTimeInitializer \
     preinstalled-packages-platform-handheld-product.xml \
     SettingsIntelligence \
     frameworks-base-overlays
+	
+ifeq ($(CHERISH_BUILD),)
+PRODUCT_PACKAGES += \
+    Camera2 \
+    LatinIME
+endif
 
 PRODUCT_PACKAGES_DEBUG += \
     frameworks-base-overlays-debug
